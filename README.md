@@ -128,7 +128,7 @@ PreferredEncoding: Hextile
 
 **Maintainer**
 
-* Joseph Liu
+* Jim Liu & Brian Ma
 
 ### Serial Over Lan
 <img align="right" width="30%" src="https://raw.githubusercontent.com/NTC-CCBG/snapshots/master/openbmc/SOL.PNG">
