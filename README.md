@@ -60,8 +60,6 @@ Please submit any patches against the meta-runbmc-nuvoton layer to the maintaine
   * [In-Band Firmware Update](#in-band-firmware-update)
     + [HOST Tool](#host-tool)
     + [IPMI Library](#ipmi-library)
-- [Features In Progressing](#features-in-progressing)
-- [Features Planned](#features-planned)
 - [IPMI Commands Verified](#ipmi-commands-verified)
 - [DCMI Commands Verified](#dcmi-commands-verified)
 - [Image Size](#image-size)
@@ -1045,18 +1043,6 @@ This is an OpenBMC IPMI Library (Handler) for In-Band Firmware Update.
 
 **Maintainer**
 * Jim Liu & Brian Ma
-
-
-## Features In Progressing
-* Improve IPMI
-* Improve Redfish
-* System logs
-
-## Features Planned
-* PLDM
-* NCSI
-* Improve Power contorl
-* Intel Platform related features
 
 # IPMI Commands Verified
 
