@@ -525,27 +525,20 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 * Jim Liu & Brian Ma
 
 ### LED
-<img align="right" width="30%" src="https://raw.githubusercontent.com/NTC-CCBG/snapshots/master/openbmc/ServerLed.PNG">  
-
-Turning on ServerLED via WebUI will make **identify** leds on BMC start blinking,
- and **heartbeat** will start blinkling after BMC booted.
-
-**Source URL**
-* [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/leds](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/leds)
+BUV have eight free led can control by customer
+Led gpio range is from 488 to 495
 
 **How to use**
-* Add EnclosureIdentify in LED [config file](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/leds/olympus-nuvoton-led-manager-config/led.yaml)
+* use export command to turn on/off the led
   ```
-  BmcBooted:
-    heartbeat:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 1000
-  EnclosureIdentify:
-    identify:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 1000
+  echo 488 > /sys/class/gpio/export
+  echo out > /sys/class/gpio/gpio488/direction
+  echo 0 > /sys/class/gpio/gpio488/value
+
+  echo 489 > /sys/class/gpio/export
+  echo out > /sys/class/gpio/gpio489/direction
+  echo 1 > /sys/class/gpio/gpio489/value
+  echo 0 > /sys/class/gpio/gpio489/value
   ```
 
 * Modify BSP layer [config](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/conf/machine/olympus-nuvoton.conf) to select NPCM750 LED config file
