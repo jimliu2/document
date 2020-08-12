@@ -541,11 +541,6 @@ Led gpio range is from 488 to 495
   echo 0 > /sys/class/gpio/gpio489/value
   ```
 
-* Modify BSP layer [config](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/conf/machine/olympus-nuvoton.conf) to select NPCM750 LED config file
-  ```
-  PREFERRED_PROVIDER_virtual/phosphor-led-manager-config-native = "npcm750-led-manager-config-native"
-  ```
-
 **Maintainer**
 
 * Jim Liu & Brian Ma
