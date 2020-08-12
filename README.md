@@ -171,7 +171,7 @@ It's verified with Nuvoton's NPCM750 Olympus solution and Quanta RunBMC.
 
 **Maintainer**
 
-* Tyrone Ting
+* Jim Liu & Brian Ma
 
 ### Virtual Media
 <img align="right" width="20%" src="https://cdn.rawgit.com/NTC-CCBG/snapshots/3e65e7a/openbmc/vm_app_win.png">
@@ -226,7 +226,7 @@ Virtual Media (VM) is to emulate an USB drive on remote host PC via Network Bloc
         + After `UnMount USB`, click `Stop VM` to stop VM network service, or click `Mount USB` to hook USB disk to host platform.
 
 **Maintainer**
-* Medad CChien
+* Jim Liu & Brian Ma
 
 ### BMC Firmware Update
 <img align="right" width="30%" src="https://cdn.rawgit.com/NTC-CCBG/snapshots/cab7306/openbmc/firmware-update.png">
@@ -273,7 +273,7 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 
 **Maintainer**
 
-* Medad CChien
+* Jim Liu & Brian Ma
 
 
 ## System
@@ -406,7 +406,7 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
     timedatectl list-timezones
     ```
     **Maintainer**  
-* Tim Lee
+* Jim Liu & Brian Ma
 
 ### Sensor
 [phosphor-hwmon](https://github.com/openbmc/phosphor-hwmon) daemon will periodically check the sensor reading to see if it exceeds lower bound or upper bound . If alarm condition is hit, the [phosphor-sel-logger](https://github.com/openbmc/phosphor-sel-logger) handles all sensor events to add new IPMI SEL records to the journal, [phosphor-host-ipmid](https://github.com/Nuvoton-Israel/phosphor-host-ipmid) will convert the journal SEL records to IPMI SEL record format and reply to host.
@@ -524,7 +524,7 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 
 **Maintainer**
 
-* Stanley Chu
+* Jim Liu & Brian Ma
 
 ### LED
 <img align="right" width="30%" src="https://raw.githubusercontent.com/NTC-CCBG/snapshots/master/openbmc/ServerLed.PNG">  
@@ -557,7 +557,7 @@ Turning on ServerLED via WebUI will make **identify** leds on BMC start blinking
 
 **Maintainer**
 
-* Stanley Chu
+* Jim Liu & Brian Ma
 
 
 ### BIOS POST Code
@@ -589,7 +589,7 @@ This is a patch for enabling BIOS POST Code feature in [phosphor-host-postd](htt
         recv: 0x7_
 
 **Maintainer**
-* Tim Lee
+* Jim Liu & Brian Ma
 
 ### FRU
 <img align="right" width="30%" src="https://cdn.rawgit.com/NTC-CCBG/snapshots/cab7306/openbmc/fru.png">
@@ -658,7 +658,7 @@ This is a patch for enabling FRU feature in [phosphor-impi-fru](https://github.c
   Select `Server health` -> `Hardware status` on **Web-UI** will show FRU Board Info/Chassis Info/Product Info area.
 
 **Maintainer**
-* Tim Lee
+* Jim Liu & Brian Ma
 
 ### Fan PID Control
 <img align="right" width="30%" src="https://cdn.rawgit.com/NTC-CCBG/snapshots/e12e9dd/openbmc/fan_stepwise_pwm.png">
@@ -824,7 +824,7 @@ In order to automatically apply accurate and responsive correction to a fan cont
 
 
 **Maintainer**
-* Tim Lee
+* Jim Liu & Brian Ma
 
 
 ## IPMI / DCMI
@@ -872,8 +872,7 @@ The patch integrates [phosphor-net-ipmid](https://github.com/Nuvoton-Israel/open
 
 **Maintainer**
 
-* Tyrone Ting
-* Stanley Chu
+* Jim Liu & Brian Ma
 
 
 ## JTAG Master
@@ -937,7 +936,7 @@ loadsvf -d /dev/jtag0 -s firmware.svf
 ```
 
 **Maintainer**
-* Stanley Chu
+* Jim Liu & Brian Ma
 
 
 ## In-Band Firmware Update
@@ -1045,7 +1044,7 @@ This is an OpenBMC IPMI Library (Handler) for In-Band Firmware Update.
     ```
 
 **Maintainer**
-* Medad CChien
+* Jim Liu & Brian Ma
 
 
 ## Features In Progressing
