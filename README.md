@@ -526,6 +526,7 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 
 ### LED
 BUV have eight free led can control by customer
+
 Led gpio range is from 488 to 495
 
 **How to use**
