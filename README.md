@@ -538,7 +538,6 @@ Led gpio range is from 488 to 495
 
   echo 489 > /sys/class/gpio/export
   echo out > /sys/class/gpio/gpio489/direction
-  echo 1 > /sys/class/gpio/gpio489/value
   echo 0 > /sys/class/gpio/gpio489/value
   ```
 
