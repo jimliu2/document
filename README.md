@@ -912,7 +912,10 @@ Here uses the RunBMC Olympus server as example.
 
 
 ### CPLD Programming
-The motherboard on server have a CPLD device that can be upgraded firmware on it. BMC can load svf file to program CPLD via JTAG.  
+BMC can load svf file to program CPLD via JTAG.  
+
+BUV can use J705 pin5 , pin7 , pin9 , pin13 to connect CPLD.
+
 
 **How to use**
 
