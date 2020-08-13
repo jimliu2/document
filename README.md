@@ -1027,10 +1027,10 @@ This is an OpenBMC IPMI Library (Handler) for In-Band Firmware Update.
 * Jim Liu & Brian Ma
 
 # IPMI Commands Verified
-[Rework for buv](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/REWORK.md)
+reference with [IPMI.md](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/REWORK.md)
 
 # DCMI Commands Verified
-[Rework for buv](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/REWORK.md)
+reference with [DCMI.md](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/REWORK.md)
 
 # Image Size
 Type          | Size    | Note                                                                                                     |
