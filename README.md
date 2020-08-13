@@ -553,7 +553,7 @@ In NPCM750, we support a FIFO for monitoring BIOS POST Code. Typically, this fea
 
 This is a patch for enabling BIOS POST Code feature in [phosphor-host-postd](https://github.com/openbmc/phosphor-host-postd) on Nuvoton's NPCM750.
 
-* [https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/host/phosphor-host-postd_%25.bbappend](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/host/phosphor-host-postd_%25.bbappend)
+* [https://github.com/NTC-CCBG/openbmc/blob/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/host/phosphor-host-postd_%25.bbappend](https://github.com/NTC-CCBG/openbmc/blob/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/host/phosphor-host-postd_%25.bbappend)
 
 **How to use**
 
