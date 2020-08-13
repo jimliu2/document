@@ -207,7 +207,7 @@ Virtual Media (VM) is to emulate an USB drive on remote host PC via Network Bloc
 
     2. Operations of Virtual Media
         * After `Choose File`, click `Start` to start VM network service
-        * After clicking `Start`, you will see a new USB device on HOST OS
+        * After clicking `Start` and connect J2009 to your HOST, you will see a new USB device on HOST OS
         * If you want to stop this service, just click `Stop` to stop VM network service.
 
 **Maintainer**
