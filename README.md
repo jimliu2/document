@@ -557,22 +557,9 @@ This is a patch for enabling BIOS POST Code feature in [phosphor-host-postd](htt
 
 **How to use**
 
-* Execute BIOS POST Code test program by command in BMC
-  ```
-  snooper
-  ```
-
-  This command will trigger snooper test program to record BIOS POST Code from port 0x80 of host and save to file with timestamp filename in BMC for each host power on or reset.
-  > _Saved filename format example: 2019_4_30_11_52_35_ON_
-
 * Server Power on
 
-  Press `Power on` button from `Server control` ->`Server power operations` of WebUI.
-  During server power on, snooper test program will print received BIOS POST Code on screen and record to file in BMC at the same time.
-  > _Snooper test program print received BIOS POST Code example:_
-    > _recv: 0x3
-        recv: 0x2
-        recv: 0x7_
+  Press the host `Power on` button after bmc boot up
 
 * Seven segment display daemon to show  BIOS POST Code
 
