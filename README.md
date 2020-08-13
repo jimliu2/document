@@ -574,6 +574,10 @@ This is a patch for enabling BIOS POST Code feature in [phosphor-host-postd](htt
         recv: 0x2
         recv: 0x7_
 
+* Seven segment display daemon to show  BIOS POST Code
+
+  The Seven segment display daemon can show the POST Code number to  Seven segment display
+
 **Maintainer**
 * Jim Liu & Brian Ma
 
