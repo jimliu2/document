@@ -210,19 +210,6 @@ Virtual Media (VM) is to emulate an USB drive on remote host PC via Network Bloc
         * After clicking `Start`, you will see a new USB device on HOST OS
         * If you want to stop this service, just click `Stop` to stop VM network service.
 
-    2.2 VM standalone application
-    * Download [application source code](https://github.com/Nuvoton-Israel/openbmc-util/tree/master/virtual_media_openbmc2.6)
-    * Follow the [readme](https://github.com/Nuvoton-Israel/openbmc-util/blob/master/virtual_media_openbmc2.6/NBDServerWSWindows/README) instructions install QT and Openssl
-    * Start QT creator, open project **VirtualMedia.pro**, then build all
-    * Launch windows/linux application
-        > _NOTICE : use `sudo` to launch app in linux and install `nmap` first_
-    *  Operations
-        + After `Chose an Image File` or `Select an USB Drive`, click `Search` to check which BMCs are on line
-        + Select any on line BMC and key in `Account/Password`, choose the `Export Type` to Image, and click `Start VM` to start VM network service (still not hook USB disk to host platform)
-        + After `Start VM`, click `Mount USB` to hook the emulated USB disk to host platform, or click `Stop VM` to stop VM network service.
-        + After `Mount USB`, click `UnMount USB` to emulate unplugging the USB disk from host platform
-        + After `UnMount USB`, click `Stop VM` to stop VM network service, or click `Mount USB` to hook USB disk to host platform.
-
 **Maintainer**
 * Jim Liu & Brian Ma
 
