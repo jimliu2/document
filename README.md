@@ -359,9 +359,6 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
   Intel PCH provides read commands that BMC get PCH time over i2c.   
   If BMC is connected to PCH, you can use this feature to hanle BMC time.
 
-  **Source URL**
-  * [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/pch-time-sync](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/pch-time-sync)
-
   **How to use**
 
   1. Please check the [i2c bus and slave address](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/pch-time-sync/pch-time-sync.cpp#L94)
@@ -374,9 +371,6 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 
   Intel Node Manager is synchronizing periodically its internal clock with system RTC.  
   It also provides a get sel command that BMC can get time over IPMB interface.   
-
-  **Source URL**
-  * [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/bmc-time-sync](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/bmc-time-sync)
 
   **How to use**
   1. Please follow [Host Power Budget Control](#host-power-budget-control) to setup IPMB interface.
