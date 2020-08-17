@@ -80,7 +80,7 @@ This is a Virtual Network Computing (VNC) server programm using [LibVNCServer](h
 
 **How to use**
 
-1. Power on the Nuvoton RunBMC Olympus
+1. Power on the Nuvoton RunBMC BUV
 2. Make sure the network is connected with your workstation.
 3. Launch a browser in your workstation and you will see the entry page.
     ```
