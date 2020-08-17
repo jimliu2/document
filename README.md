@@ -357,8 +357,8 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
       ```
       timedatectl list-timezones
       ```
-  * Maintainer  
-    * Jim Liu & Brian Ma
+**Maintainer**
+* Jim Liu & Brian Ma
 
 ### Intel PCH Time Sync
 
@@ -373,8 +373,8 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
   1. Please check the [i2c bus and slave address](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/pch-time-sync/pch-time-sync.cpp#L94)
   2. The serivce will auto sync pch time during openbmc startup.
 
-  **Maintainer**
-  * Brain Ma
+**Maintainer**
+* Jim Liu & Brian Ma
 
 ### Intel Node Manager Get SEL Time
 
@@ -388,8 +388,8 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
   1. Please follow [Host Power Budget Control](#host-power-budget-control) to setup IPMB interface.
   2. The serivce will auto get time via get sel time command during openbmc startup.
 
-  * Maintainer  
-    * Jim Liu & Brian Ma
+**Maintainer**
+* Jim Liu & Brian Ma
 
 ### Sensor
 [phosphor-hwmon](https://github.com/openbmc/phosphor-hwmon) daemon will periodically check the sensor reading to see if it exceeds lower bound or upper bound . If alarm condition is hit, the [phosphor-sel-logger](https://github.com/openbmc/phosphor-sel-logger) handles all sensor events to add new IPMI SEL records to the journal, [phosphor-host-ipmid](https://github.com/Nuvoton-Israel/phosphor-host-ipmid) will convert the journal SEL records to IPMI SEL record format and reply to host.
