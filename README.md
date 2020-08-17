@@ -246,7 +246,7 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
     We can update BMC firmware via REST API provided by Redfish. The firmware will apply immediately after uploaded without any confirmation by default.
     The following command shows how to using curl command upload BMC firmware.
     ```
-    curl -X POST -H "x-auth-token: ${token}" --data-binary obmc-phosphor-image-olympus-nuvoton.static.mtd.tar https://${BMC_IP}/redfish/v1/UpdateService
+    curl -X POST -H "x-auth-token: ${token}" --data-binary obmc-phosphor-image-buv-runbmc-20200814010351.static.mtd.tar https://${BMC_IP}/redfish/v1/UpdateService
     ```
     >_${token} is the token value come from login API, read more information from [REST README](https://github.com/openbmc/docs/blob/master/REST-cheatsheet.md)_
 
