@@ -25,7 +25,8 @@ Please submit any patches against the meta-runbmc-nuvoton layer to the maintaine
 * Jim Liu, <JJLIU0@nuvoton.com>
 
 # Rework for BUV
-
+We have runbmc card on server Olympus, so we make a BUV carried board.
+The BUV board can plug in the runbmc card.
 - reference with [Rework for buv](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/REWORK.md)
 
 # Table of Contents
