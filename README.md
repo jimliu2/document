@@ -373,7 +373,7 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
   It also provides a get sel command that BMC can get time over IPMB interface.   
 
   **How to use**
-  1. Please follow [Host Power Budget Control](#host-power-budget-control) to setup IPMB interface.
+  1. Please follow [Host Power Budget Control](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/README.md#host-power-budget-control) to setup IPMB interface.
   2. The serivce will auto get time via get sel time command during openbmc startup.
 
 **Maintainer**
