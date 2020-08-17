@@ -21,15 +21,10 @@ This layer depends on:
 
 Please submit any patches against the meta-runbmc-nuvoton layer to the maintainer of nuvoton:
 
-* Joseph Liu, <KWLIU@nuvoton.com>
-* Medad CChien, <CTCCHIEN@nuvoton.com>
-* Tyrone Ting, <KFTING@nuvoton.com>
-* Stanley Chu, <YSCHU@nuvoton.com>
-* Tim Lee, <CHLI30@nuvoton.com>
 * Brian Ma, <CHMA0@nuvoton.com>
 * Jim Liu, <JJLIU0@nuvoton.com>
 
-# Rework for buv
+# Rework for BUV
 
 - reference with [Rework for buv](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/REWORK.md)
 
