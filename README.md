@@ -137,15 +137,13 @@ This is a patch for enabling SOL in [phosphor-webui](https://github.com/openbmc/
 
 The patch provides the [obmc-console](https://github.com/openbmc/obmc-console) configuration.
 
-It's verified with Nuvoton's NPCM750 Olympus solution and Quanta RunBMC.
-
 **Source URL**
 
 * [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/console](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/console)
 
 **How to use**
 
-1. Setup serial console in Olympus host (Ubuntu as example)
+1. Setup serial console in Ubuntu host
     * reference: [Ubuntu 16.04: GRUB2 and Linux with serial console](https://www.hiroom2.com/2016/06/06/ubuntu-16-04-grub2-and-linux-with-serial-console/)
     * Set value as following in /etc/default/grub
     ```
