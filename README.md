@@ -42,7 +42,10 @@ The BUV board can plug in the runbmc card.
     + [Virtual Media](#virtual-media)
     + [BMC Firmware Update](#bmc-firmware-update)
   * [System](#system)
-    + [Time](#time)
+    + [Time Sync](#time-sync)
+      + [NTP Server](#ntp-server)
+      + [Intel PCH Time Sync](#intel-pch-time-sync)
+      + [Intel Node Manager Get SEL Time](#intel-node-manager-get-sel-time)
     + [Sensor](#sensor)
     + [LED](#led)
     + [BIOS POST Code](#bios-post-code)
@@ -260,29 +263,32 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 
 ## System
 
-### Time
-  * **SNTP**
-    	Network Time Protocol (NTP) is a networking protocol for clock synchronization between computer systems over packet-switched, variable-latency data networks.
+### Time Sync
+  We provided three ways that user can synchronize the BMC time from network or host.
 
-    **systemd-timesyncd** is a daemon that has been added for synchronizing the system clock across the network. It implements an **SNTP (Simple NTP)** client. This daemon runs with minimal privileges, and has been hooked up with **systemd-networkd** to only operate when network connectivity is available.
+### NTP Server
+  Network Time Protocol (NTP) is a networking protocol for clock synchronization between computer systems over packet-switched, variable-latency data networks.
+
+  **systemd-timesyncd** is a daemon that has been added for synchronizing the system clock across the network. It implements an **SNTP (Simple NTP)** client. This daemon runs with minimal privileges, and has been hooked up with **systemd-networkd** to only operate when network connectivity is available.
         
-    The modification time of the file **/var/lib/systemd/timesync/clock** indicates the timestamp of the last successful synchronization (or at least the **systemd build date**, in case synchronization was not possible).
+  The modification time of the file **/var/lib/systemd/timesync/clock** indicates the timestamp of the last successful synchronization (or at least the **systemd build date**, in case synchronization was not possible).
     
-    **Source URL**
-    * [https://github.com/systemd/systemd/tree/master/src/timesync](https://github.com/systemd/systemd/tree/master/src/timesync)
+  **Source URL**
+  * [https://github.com/openbmc/phosphor-time-manager](https://github.com/openbmc/phosphor-time-manager)
+  * [https://github.com/systemd/systemd/tree/master/src/timesync](https://github.com/systemd/systemd/tree/master/src/timesync)
     
-    **How to use**
-    <img align="right" width="30%" src="https://raw.githubusercontent.com/NTC-CCBG/snapshots/master/openbmc/Time.PNG">
-    * Enable NTP by **Web-UI** `Server configuration`
+  **How to use**
+  <img align="right" width="30%" src="https://raw.githubusercontent.com/NTC-CCBG/snapshots/master/openbmc/Time.PNG">
+  * Enable NTP by **Web-UI** `Server configuration`
       ->`Date and time settings`
-    * Enable NTP by command
+  * Enable NTP by command
       ```
       timedatectl set-ntp true  
       ```
       >_timedatectl result will show **systemd-timesyncd.service active: yes**_ 
     
-      If NTP is Enabled and network is Connected (Using **eth2** connect to router), we will see the item **systemd-timesyncd.service active** is **yes** and **System clock synchronized** is **yes**. Thus, system time will sync from NTP server to get current time.
-    * Get NTP status  
+      If NTP is Enabled and network is Connected (Using **eth1** connect to router), we will see the item **systemd-timesyncd.service active** is **yes** and **System clock synchronized** is **yes**. Thus, system time will sync from NTP server to get current time.
+  * Get NTP status  
       ```
       timedatectl  
       ```
@@ -294,13 +300,13 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
       >**systemd-timesyncd.service active: yes**  
       >RTC in local TZ: no_  
       
-    * Disable NTP  
+  * Disable NTP  
       ```
       timedatectl set-ntp false  
       ```
       >_timedatectl result will show **systemd-timesyncd.service active: no**_  
       
-    * Using Local NTP server Configuration  
+  * Using Local NTP server Configuration  
     When starting, systemd-timesyncd will read the configuration file from **/etc/systemd/timesyncd.conf**, which looks like as below: 
         >_[Time]  
         >\#NTP=  
@@ -311,12 +317,12 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
         >**NTP=192.168.1.128**  
     	>\#FallbackNTP=time1.google.com time2.google.com time3.google.com time4.google.com_
     
-    * BMC connect to local NTP server of windows 10 system  
-      Connect to NB through **eth0** EMAC interface, and set static IP **192.168.1.15**  
+  * BMC connect to local NTP server of windows 10 system  
+      Connect to NB through **eth1** EMAC interface, and set static IP **192.168.1.15**  
     
       ```
-      ifconfig eth0 up
-      ifconfig eth0 192.168.1.15
+      ifconfig eth1 up
+      ifconfig eth1 192.168.1.15
       ```  
       >_Note: Before that you need to setup your NTP server (192.168.1.128) on Windows 10 system first_  
       
@@ -344,49 +350,44 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
       >Time zone: n/a (UTC, +0000)  
       >System clock synchronized: yes  
       >systemd-timesyncd.service active: yes  
-      >RTC in local TZ: no_  
+      >RTC in local TZ: no_
 
-  * **Time settings**  
-    **Phosphor-time-manager** provides two objects on D-Bus
-      >_/xyz/openbmc_project/time/bmc_
-      >
-      >_/xyz/openbmc_project/time/host_  
+  * TimeZone  
+      According OpenBMC current design that only support UTC TimeZone now, we can use below command to get current support TimeZone on BMC
+      ```
+      timedatectl list-timezones
+      ```
+  * Maintainer  
+    * Tim Lee
 
-      **BMC time** is used by journal event log record, and **Host time** is used by Host do IPMI Set SEL Time command to sync BMC time from Host mechanism in an era of BMC without any network interface.  
-      Currently, we cannot set Host time no matter what we use **busctl**, **REST API** or **ipmitool set time set** command. Due to **phosphor-settingd** this daemon set default TimeOwner is BMC and TimeSyncMethod is NTP. Thus, when TimeOwner is BMC that is not allow to set Host time anyway.
+### Intel PCH Time Sync
 
-      A summary of which cases the time can be set on BMC or HOST
+  Intel PCH provides read commands that BMC get PCH time over i2c.   
+  If BMC is connected to PCH, you can use this feature to hanle BMC time.
 
-      Mode      | Owner | Set BMC Time  | Set Host Time
-      --------- | ----- | ------------- | -------------------
-      NTP       | BMC   | Fail to set   | Not allowed (Default setting)
-      NTP       | HOST  | Not allowed   | Not allowed
-      NTP       | SPLIT | Fail to set   | OK
-      NTP       | BOTH  | Fail to set   | Not allowed
-      MANUAL    | BMC   | OK            | Not allowed
-      MANUAL    | HOST  | Not allowed   | OK
-      MANUAL    | SPLIT | OK            | OK
-      MANUAL    | BOTH  | OK            | OK
+  **Source URL**
+  * [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/pch-time-sync](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/pch-time-sync)
 
-      If user would like to set Host time that need to set Owner to SPLIT in NTP mode or set Owner to HOST/SPLIT/BOTH in MANUAL mode. However, change Host time will not effect BMC time and journal event log timestamp.
+  **How to use**
 
-    **Set Time Owner to Split**
-    ```
-    ### With busctl on BMC
-    busctl set-property xyz.openbmc_project.Settings \
-       /xyz/openbmc_project/time/owner xyz.openbmc_project.Time.Owner \
-       TimeOwner s xyz.openbmc_project.Time.Owner.Owners.Split
-    
-    ### With REST API on remote host
-    curl -c cjar -b cjar -k -H "Content-Type: application/json" -X  PUT  -d \
-       '{"data": "xyz.openbmc_project.Time.Owner.Owners.Split" }' \
-       https://${BMC_IP}/xyz/openbmc_project/time/owner/attr/TimeOwner
-    ```
-    **TimeZone**  
-    According OpenBMC current design that only support UTC TimeZone now, we can use below command to get current support TimeZone on BMC
-    ```
-    timedatectl list-timezones
-    ```
+  1. Please check the [i2c bus and slave address](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/pch-time-sync/pch-time-sync.cpp#L94)
+  2. The serivce will auto sync pch time during openbmc startup.
+
+  **Maintainer**
+  * Brain Ma
+
+### Intel Node Manager Get SEL Time
+
+  Intel Node Manager is synchronizing periodically its internal clock with system RTC.  
+  It also provides a get sel command that BMC can get time over IPMB interface.   
+
+  **Source URL**
+  * [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/bmc-time-sync](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-quanta/meta-olympus-nuvoton/recipes-phosphor/datetime/bmc-time-sync)
+
+  **How to use**
+  1. Please follow [Host Power Budget Control](#host-power-budget-control) to setup IPMB interface.
+  2. The serivce will auto get time via get sel time command during openbmc startup.
+
     **Maintainer**  
 * Jim Liu & Brian Ma
 
