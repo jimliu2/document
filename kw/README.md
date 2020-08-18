@@ -525,7 +525,7 @@ This is a patch for enabling FRU feature in [phosphor-impi-fru](https://github.c
 
 **How to use**
 * Modify DTS settings of EEPROM for FRU.
-  For example about DTS **nuvoton-npcm750-evb.dts**:
+  For example about DTS **nuvoton-npcm750-buv-runbmc.dts**:
   ```
   i2c13: i2c@8d000 {
          #address-cells = <1>;
