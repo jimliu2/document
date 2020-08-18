@@ -527,21 +527,23 @@ This is a patch for enabling FRU feature in [phosphor-impi-fru](https://github.c
 * Modify DTS settings of EEPROM for FRU.
   For example about DTS **nuvoton-npcm750-evb.dts**:
   ```
-  i2c4: i2c@84000 {
-      #address-cells = <1>;
-      #size-cells = <0>;
-      bus-frequency = <100000>;
-      status = "okay";
-      eeprom@54 {
-          compatible = "atmel,24c64";
-          reg = <0x54>;
-      };
-  };
+  i2c13: i2c@8d000 {
+         #address-cells = <1>;
+         #size-cells = <0>;
+         bus-frequency = <100000>;
+         status = "okay";
+         m24128_fru@51 {
+         	compatible = "atmel,24c128";
+        	 reg = <0x51>;
+        	 pagesize = <64>;
+        	 status = "okay";
+        	 };
+         };
   ```
 
   According DTS modification, you also need to remember modify your EEPROM file description content about **SYSFS_PATH** and **FRUID**. Below is example for our EEPROM file description **[motherboard](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/ipmi/phosphor-ipmi-fru/obmc/eeproms/system/chassis/motherboard)**:
   ```
-  SYSFS_PATH=/sys/bus/i2c/devices/3-0050/eeprom
+  SYSFS_PATH=/sys/bus/i2c/devices/13-0051/eeprom
   FRUID=1
   ```
   **SYSFS_PATH** is the path according your DTS setting and **FRUID** is arbitrary number but need to match **Fruid** in **[config.yaml](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/configuration/olympus-nuvoton-yaml-config/olympus-nuvoton-ipmi-fru.yaml)** file. Below is example for when **Fruid** set as 1:
