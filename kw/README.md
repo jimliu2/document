@@ -344,37 +344,48 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 
     Below is hwmon config for a LM75 sensor on BMC. The sensor type is **temperature** and its name is **bmc_card**. It has warning and critical thresholds for **upper** and **lower** bound.
       ```
-      LABEL_temp1 = "bmc_card"
-      WARNHI_temp1 = "110000"
-      WARNLO_temp1 = "5000"
-      CRITHI_temp1 = "115000"
-      CRITLO_temp1 = "0"
+      LABEL_temp1=bmc_card_tmp75
+      WARNLO_temp1=10000
+      WARNHI_temp1=40000
+      CRITHI_temp1=70000
+      CRITLO_temp1=0
+      EVENT_temp1=WARNHI,WARNLO
       ```
     Below is ipmi sdr config for a LM75 sensor on BMC.
       ```
-      1:
-        entityID: 0x07
-        entityInstance: 1
-        sensorType: 0x01
-        path: /xyz/openbmc_project/sensors/temperature/bmc_card
-        sensorReadingType: 0x01
-        multiplierM: 1
-        offsetB: 0
-        bExp: 0
-        rExp: 0
-        scale: -3
-        unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
-        mutability: Mutability::Write|Mutability::Read
-        serviceInterface: org.freedesktop.DBus.Properties
-        readingType: readingData
-        sensorNamePattern: nameLeaf
-        interfaces:
-          xyz.openbmc_project.Sensor.Value:
-            Value:
-              Offsets:
-                0xFF:
-                  type: int64_t
-
+        {
+            "Address": "0x4A",
+            "Bus": 13,
+            "EntityId": 7,
+            "EntityInstance": 2,
+            "Name": "BMC_Temp",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Name": "upper critical",
+                    "Severity": 1,
+                    "Value": 75.000
+                },
+                {
+                    "Direction": "greater than",
+                    "Name": "upper non critical",
+                    "Severity": 0,
+                    "Value": 60.000
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower non critical",
+                    "Severity": 0,
+                    "Value": 15.000
+                },
+                {
+                    "Direction": "less than",
+                    "Name": "lower critical",
+                    "Severity": 1,
+                    "Value": 0
+                }
+            ],
+          }
       ```
 
 * **Monitor sensor and events**
