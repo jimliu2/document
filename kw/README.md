@@ -329,9 +329,9 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 [phosphor-hwmon](https://github.com/openbmc/phosphor-hwmon) daemon will periodically check the sensor reading to see if it exceeds lower bound or upper bound . If alarm condition is hit, the [phosphor-sel-logger](https://github.com/openbmc/phosphor-sel-logger) handles all sensor events to add new IPMI SEL records to the journal, [phosphor-host-ipmid](https://github.com/Nuvoton-Israel/phosphor-host-ipmid) will convert the journal SEL records to IPMI SEL record format and reply to host.
 
 **Source URL**
-* [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/configuration](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/configuration)
-* [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/ipmi](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/ipmi)
-* [https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/sensors](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/sensors)
+* [https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/configuration](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/configuration)
+* [https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/ipmi](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/ipmi)
+* [https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/sensors](https://github.com/NTC-CCBG/openbmc/tree/buv-dev/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/sensors)
 
 
 **How to use**
