@@ -476,6 +476,31 @@ This is a patch for enabling BIOS POST Code feature in [phosphor-host-postd](htt
 
 **How to use**
 
+* Modify DTS settings of LED for BUV.
+  For example about DTS **nuvoton-npcm750-buv-runbmc.dts**:
+  ```
+  seven-seg-gpio {
+	compatible = "seven-seg-gpio-dev";
+	refresh-interval-ms = <500>;
+	seven-gpios = <&gpio4 14 0>,
+				<&gpio4 12 0>,
+				<&gpio7 7 0>,
+				<&gpio0 9 0>,
+				<&gpio4 15 0>,
+				<&gpio2 25 0>,
+				<&gpio4 11 0>,
+				<&gpio4 10 0>,
+				<&gpio0 25 0>,
+				<&gpio4 9 0>,
+				<&gpio0 24 0>,
+				<&gpio0 11 0>,
+				<&gpio2 23 0>,
+				<&gpio4 13 0>,
+				<&gpio2 24 0>,
+				<&gpio2 26 0>;
+  };
+  ```
+
 * Server Power on
 
   Press the host `Power on` button after bmc boot up
