@@ -406,48 +406,36 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
 
     Use IPMI utilities like **ipmitool** to send command for getting SDR records.  
     ```
-    $ sudo ipmitool sdr elist
-      bmc_card         | 01h | ok  |  7.1 | 36 degrees C
-      inlet            | 02h | ok  |  7.2 | 27 degrees C
-      outlet           | 03h | ok  |  7.3 | 27 degrees C
-      MB0_Temp         | 04h | ok  |  7.4 | 23 degrees C
-      MB0_Vin          | 05h | ok  |  7.5 | 12.32 Volts
-      MB0_Vout         | 06h | ok  |  7.6 | 12.32 Volts
-      MB0_Pin          | 07h | ok  |  7.7 | 4 Watts
-      MB0_Iout         | 08h | ok  |  7.8 | 0.09 Amps
-      p0_dimm_vr0_temp | 09h | ok  | 32.1 | 0 degrees C
-      p0_dimm_vr1_temp | 0Ah | ok  | 32.2 | 0 degrees C
-      p1_dimm_vr0_temp | 0Bh | ok  | 32.3 | 0 degrees C
-      p1_dimm_vr1_temp | 0Ch | ok  | 32.4 | 0 degrees C
-      p0_dimm_vr0_volt | 0Dh | ok  | 32.5 | 12.40 Volts
-      p0_dimm_vr1_volt | 0Eh | ok  | 32.6 | 12.40 Volts
-      p1_dimm_vr0_volt | 0Fh | ok  | 32.7 | 12.40 Volts
-      p1_dimm_vr1_volt | 10h | ok  | 32.8 | 12.40 Volts
+    root@buv-runbmc:~# ipmitool sdr elist
+    MB P3V INA219 Ou | 00h | ok  |  7.1 | 0.78 Amps
+    MB P12V INA219 O | 01h | ok  |  7.1 | 0.29 Amps
+    Pwm 1            | 02h | ok  |  7.1 | 39.20 unspecifi
+    Pwm 2            | 03h | ok  |  7.1 | 39.20 unspecifi
+    Pwm 3            | 04h | ok  |  7.1 | 39.20 unspecifi
+    Pwm 4            | 05h | ok  |  7.1 | 39.20 unspecifi
+    Fan1             | 06h | ok  | 29.1 | 0 RPM
+    Fan2             | 07h | ok  | 29.2 | 0 RPM
+    Fan3             | 08h | ok  | 29.3 | 0 RPM
+    Fan4             | 09h | ok  | 29.4 | 0 RPM
+    MB P3V INA219 Ou | 0Ah | ok  |  7.1 | 2.36 Watts
+    MB P12V INA219 O | 0Bh | ok  |  7.1 | 3.54 Watts
+    BMC Temp         | 0Ch | ok  |  7.2 | 42 degrees C
+    Outlet Temp      | 0Dh | ok  |  7.3 | 30 degrees C
+    ADC1             | 0Eh | ok  | 23.1 | 2.03 Volts
+    ADC2             | 0Fh | ucr | 23.2 | 1.72 Volts
+    ADC3             | 10h | ok  | 23.3 | 1.09 Volts
+    ADC4             | 11h | ok  | 23.4 | 0.86 Volts
+    ADC5             | 12h | ok  | 23.5 | 1.09 Volts
+    ADC6             | 13h | ok  | 23.6 | 0.94 Volts
+    ADC7             | 14h | ucr | 23.7 | 1.48 Volts
+    ADC8             | 15h | ok  | 23.8 | 1.09 Volts
+    MB P3V INA219 Ou | 16h | ok  |  7.1 | 3.35 Volts
+    MB P12V INA219 O | 17h | ok  |  7.1 | 12.17 Volts
     ```
     Use IPMI utilities like **ipmitool** to send command for getting SEL records.  
     ```
-    $ sudo ipmitool sel list
-    
-       1 | 10/04/2018 | 07:08:54 | Temperature #0x03 | Lower Critical going low  | Asserted
-       2 | 10/04/2018 | 07:10:39 | Temperature #0x03 | Lower Critical going low  | Asserted
-       3 | 10/04/2018 | 07:28:04 | Temperature #0x03 | Upper Critical going high | Asserted
-       4 | 10/04/2018 | 07:28:11 | Temperature #0x03 | Upper Critical going high | Asserted
-       5 | 10/04/2018 | 07:28:13 | Temperature #0x03 | Upper Critical going high | Asserted
-       6 | 10/04/2018 | 07:46:34 | Temperature #0x03 | Upper Critical going high | Asserted
-       7 | 10/04/2018 | 07:46:38 | Temperature #0x03 | Upper Critical going high | Asserted
-       8 | 10/04/2018 | 07:46:43 | Temperature #0x03 | Upper Critical going high | Asserted
-       9 | 10/04/2018 | 07:46:59 | Temperature #0x03 | Upper Critical going high | Asserted
-       a | 10/04/2018 | 07:47:24 | Temperature #0x03 | Upper Critical going high | Asserted
-       b | 10/04/2018 | 07:47:29 | Temperature #0x03 | Upper Critical going high | Asserted
-       c | 10/04/2018 | 07:47:42 | Temperature #0x03 | Upper Critical going high | Asserted
-       d | 10/04/2018 | 07:48:37 | Temperature #0x03 | Upper Critical going high | Asserted
-       e | 10/04/2018 | 07:48:39 | Temperature #0x03 | Upper Critical going high | Asserted
-       f | 10/04/2018 | 07:48:53 | Temperature #0x03 | Upper Critical going high | Asserted
-      10 | 10/04/2018 | 09:19:11 | Temperature #0x03 | Lower Critical going low  | Asserted
-      11 | 10/04/2018 | 09:20:22 | Temperature #0x03 | Lower Critical going low  | Asserted
-      12 | 10/04/2018 | 09:20:24 | Temperature #0x03 | Lower Critical going low  | Asserted
-      13 | 10/04/2018 | 09:33:24 | Temperature #0x03 | Upper Critical going high | Asserted
-      14 | 10/04/2018 | 09:33:31 | Temperature #0x03 | Upper Critical going high | Asserted
+    ipmitool sel list
+    1 |  Pre-Init  |0000000049| Voltage #0x14 | Upper Critical going high | Asserted
     ```
 
 **Maintainer**
