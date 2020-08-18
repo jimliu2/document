@@ -340,7 +340,7 @@ This is a secure flash update mechanism to update BMC firmware via WebUI.
   
   * Add Sensor Configuration File
   
-    Each sensor **temperature**, **adc**, **fan**, **peci** and **power** has a [hwmon config file](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/sensors/phosphor-hwmon/obmc/hwmon/ahb/apb) and [ipmi sdr config file](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/configuration/olympus-nuvoton-yaml-config/olympus-nuvoton-ipmi-sensors.yaml) that defines the sensor name and its warning or critical thresholds. These files are located under **recipes-phosphor/sensors/phosphor-hwmon%/obmc/hwmon/apb/** and **recipes-phosphor/configuration/olympus-nuvoton-yaml-config/olympus-nuvoton-ipmi-sensors.yaml**.  
+    Each sensor **temperature**, **adc**, **fan**, **peci** and **power** has a [hwmon config file](https://github.com/Nuvoton-Israel/openbmc/tree/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/sensors/phosphor-hwmon/obmc/hwmon/ahb/apb) and [ipmi sdr config file](https://github.com/Nuvoton-Israel/openbmc/blob/runbmc/meta-evb/meta-evb-nuvoton/meta-buv-runbmc/recipes-phosphor/configuration/olympus-nuvoton-yaml-config/olympus-nuvoton-ipmi-sensors.yaml) that defines the sensor name and its warning or critical thresholds.  
 
     Below is hwmon config for a LM75 sensor on BMC. The sensor type is **temperature** and its name is **bmc_card**. It has warning and critical thresholds for **upper** and **lower** bound.
       ```
