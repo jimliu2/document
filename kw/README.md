@@ -604,7 +604,7 @@ In order to automatically apply accurate and responsive correction to a fan cont
     Here is a configuration example shows how to using one PWM control more than one fans on system.
     ```
     "sensors" : [
-        {
+         {
             "name": "fan1",
             "type": "fan",
             "readPath": "/xyz/openbmc_project/sensors/fan_tach/fan1",
@@ -616,21 +616,21 @@ In order to automatically apply accurate and responsive correction to a fan cont
             "name": "fan2",
             "type": "fan",
             "readPath": "/xyz/openbmc_project/sensors/fan_tach/fan2",
-            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm1",
+            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm2",
             "min": 0,
             "max": 255
         },
         {
-            "name": "Core_0_CPU0",
+            "name": "bmc_card_tmp75",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/sensors/temperature/Core_0_CPU0",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/bmc_card_tmp75",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
     ],
-    "zones" : [
+   "zones" : [
         {
             "id": 0,
             "minThermalOutput": 0.0,
@@ -639,7 +639,7 @@ In order to automatically apply accurate and responsive correction to a fan cont
                 {
                     "name": "fan1",
                     "type": "fan",
-                    "inputs": ["fan1"],
+                    "inputs": ["fan1", "fan2"],
                     "setpoint": 40.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -656,9 +656,9 @@ In order to automatically apply accurate and responsive correction to a fan cont
                     }
                 },
                 {
-                    "name": "Core_0_CPU0",
+                    "name": "bmc_card_tmp75",
                     "type": "stepwise",
-                    "inputs": ["Core_0_CPU0"],
+                    "inputs": ["bmc_card_tmp75"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -667,33 +667,43 @@ In order to automatically apply accurate and responsive correction to a fan cont
                         "isCeiling": false,
                         "reading": {
                             "0": 25,
-                            "1": 26,
-                            "2": 27,
-                            "3": 28,
-                            "4": 29,
-                            "5": 30,
-                            "6": 31,
-                            "7": 32,
-                            "8": 33,
-                            "9": 34,
-                            ...
+                            "1": 28,
+                            "2": 31,
+                            "3": 34,
+                            "4": 37,
+                            "5": 40,
+                            "6": 43,
+                            "7": 46,
+                            "8": 49,
+                            "9": 52,
+                            "10": 55,
+                            "11": 58,
+                            "12": 61,
+                            "13": 64,
+                            "14": 67,
+                            "15": 70
                         },
                         "output": {
                             "0": 10,
                             "1": 10,
-                            "2": 10,
-                            "3": 10,
-                            "4": 10,
-                            "5": 10,
-                            "6": 20,
+                            "2": 20,
+                            "3": 20,
+                            "4": 20,
+                            "5": 30,
+                            "6": 30,
                             "7": 30,
                             "8": 40,
                             "9": 50,
-                            ...
+                            "10": 60,
+                            "11": 70,
+                            "12": 80,
+                            "13": 90,
+                            "14": 100,
+                            "15": 100
                         }
-                    },
-                },
-            ],
+                    }
+                }
+            ]
         },
     ]
     ```
